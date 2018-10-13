@@ -13,6 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        do {
+        let request =  try UsersRequest() { (request, responseObject, error) in
+            print(responseObject);
+        }
+        request.execute();
+        print("start request");
+        }
+        catch {
+            print(error);
+        }
     }
 
 
