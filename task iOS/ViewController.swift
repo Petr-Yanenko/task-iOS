@@ -9,20 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var model: UsersModel;
+    
+    
+    required init?(coder: NSCoder) {
+        self.model = UsersModel();
+        
+        super.init(coder: coder);
+        
+        self.model.loadData();
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        do {
-        let request =  try UsersRequest() { (request, responseObject, error) in
-            print(responseObject);
-        }
-        request.execute();
-        print("start request");
-        }
-        catch {
-            print(error);
-        }
     }
 
 
