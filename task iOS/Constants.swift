@@ -10,6 +10,13 @@ import Foundation
 
 let kBaseURLString: String = "https://cua-users.herokuapp.com/";
 
+let kNavigationBarFont = UIFont(name:"HelveticaNeue-Light", size:17.0);
+    
+let kMainBackgroundColor = UIColor.darkGray;
+        
+let kMainTintColor = UIColor.white;
+            
+let kMainTextColor = UIColor.white;
 
 enum TIOSError: Error {
     case GenericError(Error?);

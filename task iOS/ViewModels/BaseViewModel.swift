@@ -32,13 +32,15 @@ class BaseViewModel : NSObject, PViewModel {
         }
     };
 
-    var _model : BaseModel;
-
-    var _errorTitle : String?;
-    var errorTitle : String? { get { return _errorTitle; } }
+    var _model: BaseModel;
     
-    var _errorMessage : String?;
-    var errorMessage : String? { get { return _errorMessage; } }
+    var _data: Any;
+
+    var _errorTitle: String?;
+    var errorTitle: String? { get { return _errorTitle; } }
+    
+    var _errorMessage: String?;
+    var errorMessage: String? { get { return _errorMessage; } }
     
 
     deinit {
@@ -59,9 +61,10 @@ class BaseViewModel : NSObject, PViewModel {
         );
     }
 
-    init(model: BaseModel) {
+    init(model: BaseModel, data: Any) {
         //First stage of initialization
         _model = model;
+        _data = data;
         
         super.init();
         //Second stage of initialization
@@ -95,7 +98,7 @@ class BaseViewModel : NSObject, PViewModel {
     }
     
     func _addObservers(_ model : BaseModel) -> Void {
-        self._model.sna_registerAsObserver(
+        self.sna_registerAsObserver(
             withSubject:_model,
             property:#selector(getter: BaseModel.loading),
             context:&_loadingContext
@@ -105,7 +108,7 @@ class BaseViewModel : NSObject, PViewModel {
                 sself.loading = loading;
             }
         }
-        self._model.sna_registerAsObserver(
+        self.sna_registerAsObserver(
             withSubject:_model,
             property:#selector(getter: BaseModel.error),
             context:&_errorContext
@@ -115,7 +118,7 @@ class BaseViewModel : NSObject, PViewModel {
                 sself._sendError(error);
             }
         }
-        self._model.sna_registerAsObserver(
+        self.sna_registerAsObserver(
             withSubject:_model,
             property:#selector(getter: BaseModel.newData),
             context:&_newDataContext
@@ -137,6 +140,7 @@ class BaseViewModel : NSObject, PViewModel {
     }
     
     func _setData(_ data: Any) {
+        self._data = data;
         self.newData = true;
     }
     

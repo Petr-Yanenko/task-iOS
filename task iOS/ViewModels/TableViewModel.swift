@@ -17,9 +17,17 @@ import Foundation
 
 class TableViewModel : BaseViewModel, PTableViewModel {
     
-    var _data = [BaseCellViewModel]();
+    private var _tableData: [BaseCellViewModel] {
+        get {
+            return _data as! [BaseCellViewModel];
+        }
+    }
+    
 
-
+    init(model: BaseModel) {
+        super.init(model: model, data: [BaseCellViewModel]());
+    }
+    
     func cellReuseIdentifier(_ indexPath: IndexPath?) -> String {
         return "";
     }
@@ -41,7 +49,7 @@ class TableViewModel : BaseViewModel, PTableViewModel {
     }
 
     func cellViewModel(_ indexPath: IndexPath) -> BaseCellViewModel {
-        return _data[indexPath.row];
+        return self._tableData[indexPath.row];
     }
 
     func sectionsNumber() -> Int {
@@ -49,7 +57,7 @@ class TableViewModel : BaseViewModel, PTableViewModel {
     }
 
     func cellsNumber(_ section: Int) -> Int {
-        return _data.count;
+        return self._tableData.count;
     }
 }
 
@@ -76,11 +84,6 @@ class TableViewModel : BaseViewModel, PTableViewModel {
             data.append(item);
         }
         return data;
-    }
-    
-    override func _setData(_ data: Any) {
-        self._data = data as! [BaseCellViewModel];
-        super._setData(data);
     }
 
     func _initializeItem() throws -> BaseCellViewModel {
