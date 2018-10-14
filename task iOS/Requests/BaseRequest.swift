@@ -142,8 +142,11 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
         
         self.dataTask?.cancel();
     }
+}
     
-    // MARK: Protected
+// MARK: Protected
+@objc extension BaseRequest {
+    
     override func _performTask() {
         do {
             let request = try self._request();
@@ -323,8 +326,11 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
     func _isFailedResponse(_ response: HTTPURLResponse) -> Bool {
         return response.statusCode >= 400 && response.statusCode < 600;
     }
+}
     
-    // MARK: URLSessionDataDelegate
+// MARK: URLSessionDataDelegate
+extension BaseRequest {
+    
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
         self._checkOnCancel {}
     }

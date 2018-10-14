@@ -8,10 +8,18 @@
 
 #import "TIOSUser.h"
 
-@interface TIOSUserEntity : TIOSUser
+@protocol TIOSUserEntityProtocol <TIOSUserProtocol>
 
-@property (assign, nonatomic) NSInteger id;
-@property (strong, nonatomic) NSDate<Optional> *created;
-@property (strong, nonatomic) NSDate<Optional> *updated;
+@property (assign, nonatomic, readonly) NSInteger id;
+@property (strong, nonatomic, nullable, readonly) NSDate<Optional> *created;
+@property (strong, nonatomic, nullable, readonly) NSDate<Optional> *updated;
+
+@end
+
+@interface TIOSUserEntity : TIOSUser <TIOSUserEntityProtocol>
+
+@property (assign, nonatomic, readwrite) NSInteger id;
+@property (strong, nonatomic, nullable, readwrite) NSDate<Optional> *created;
+@property (strong, nonatomic, nullable, readwrite) NSDate<Optional> *updated;
 
 @end

@@ -22,35 +22,12 @@ import UIKit
 
 class BaseModel: NSObject, Model {
     
-    private var _newData: Bool = false;
-    @objc var newData: Bool {
-        get {
-            return _newData;
-        }
-        set {
-            _newData = newValue;
-        }
-    }
+    @objc var newData: Bool = false;
     
-    private var _loading: Bool = false;
-    @objc var loading: Bool {
-        get {
-            return _loading;
-        }
-        set {
-            _loading = newValue;
-        }
-    }
+    @objc var loading: Bool = false;
     
-    private var _error: Error?;
-    @objc var error: Error? {
-        get {
-            return _error;
-        }
-        set {
-            _error = newValue;
-        }
-    }
+    @objc var error: Error?;
+    
     
     weak var _lastRequest: BaseRequest?;
     
@@ -73,12 +50,15 @@ class BaseModel: NSObject, Model {
     func cancel() {
         _lastRequest?.cancel();
     }
+}
     
-    // MARK: Protected
+// MARK: Protected
+@objc extension BaseModel {
+    
     func _load(with completion: @escaping (Bool, Error?) -> Void) {
         do {
             let request = try self._request(with: completion);
-            request?.execute();
+            request.execute();
             self._lastRequest = request;
         }
         catch {
@@ -86,8 +66,8 @@ class BaseModel: NSObject, Model {
         }
     }
     
-    func _request(with completion: @escaping (Bool, Error?) -> Void) throws -> BaseRequest? {
-        return nil;
+    func _request(with completion: @escaping (Bool, Error?) -> Void) throws -> BaseRequest {
+        throw TIOSError.GenericError(nil);
     }
 
 }

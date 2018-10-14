@@ -24,8 +24,11 @@ class Command: Operation {
             ErrorHandler.instance.reportError(withError:TIOSError.TaskException(error))
         }
     }
+}
+
+// MARK: Protected
+@objc extension Command {
     
-    // MARK: Protected
     func _performTask() {
         
     }

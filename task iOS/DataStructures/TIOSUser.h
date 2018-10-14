@@ -8,11 +8,20 @@
 
 #import <JSONModel/JSONModel.h>
 
-@interface TIOSUser : JSONModel
+@protocol TIOSUserProtocol <NSObject>
 
-@property (copy, nonatomic) NSString<Optional> *firstName;
-@property (copy, nonatomic) NSString<Optional> *lastName;
-@property (copy, nonatomic) NSString<Optional> *email;
-@property (copy, nonatomic) NSString<Optional> *imageUrl;
+@property (copy, nonatomic, nullable, readonly) NSString<Optional> *firstName;
+@property (copy, nonatomic, nullable, readonly) NSString<Optional> *lastName;
+@property (copy, nonatomic, nullable, readonly) NSString<Optional> *email;
+@property (copy, nonatomic, nullable, readonly) NSString<Optional> *imageUrl;
+
+@end
+
+@interface TIOSUser : JSONModel <TIOSUserProtocol>
+
+@property (copy, nonatomic, nullable, readwrite) NSString<Optional> *firstName;
+@property (copy, nonatomic, nullable, readwrite) NSString<Optional> *lastName;
+@property (copy, nonatomic, nullable, readwrite) NSString<Optional> *email;
+@property (copy, nonatomic, nullable, readwrite) NSString<Optional> *imageUrl;
 
 @end

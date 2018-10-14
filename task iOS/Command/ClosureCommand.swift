@@ -32,9 +32,12 @@ class ClosureCommand: Command {
         command.execute();
         return command;
     }
+}
     
-    // MARK: Protected
-    override internal func _performTask() {
+// MARK: Protected
+extension ClosureCommand {
+    
+    override func _performTask() {
         self.closure();
     }
     
