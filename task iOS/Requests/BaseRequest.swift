@@ -156,7 +156,7 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
             self._dataTask = task;
             task.resume();
         }
-        catch let error as NSError {
+        catch {
             self._setResponse(nil, error);
         }
     }
@@ -176,7 +176,7 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
                 string: keyPath, relativeTo: kBaseURLString
             )
         }
-        catch let error as NSError {
+        catch {
             throw TIOSError.URLRequestError(error);
         }
         

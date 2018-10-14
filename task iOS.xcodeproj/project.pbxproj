@@ -15,6 +15,11 @@
 		4BC2CFDA216DBD2000E47553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2CFD8216DBD2000E47553 /* LaunchScreen.storyboard */; };
 		4BDF218A21724B5A00EA277F /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF218921724B5A00EA277F /* ListModel.swift */; };
 		4BDF218C21725E7000EA277F /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF218B21725E7000EA277F /* UsersModel.swift */; };
+		4BDF218F2173272F00EA277F /* NSObject+Observing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF218D2173272900EA277F /* NSObject+Observing.m */; };
+		4BDF21B221732F6A00EA277F /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21AE21732F6300EA277F /* TableViewModel.swift */; };
+		4BDF21B521732F6A00EA277F /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21B121732F6A00EA277F /* BaseViewModel.swift */; };
+		4BDF21B92173473500EA277F /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21B72173473300EA277F /* BaseCellViewModel.swift */; };
+		4BDF21BA2173473500EA277F /* SubtitleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21B82173473400EA277F /* SubtitleCellModel.swift */; };
 		4BEE5FA52170724E00A96F15 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE5FA42170724E00A96F15 /* ErrorHandler.swift */; };
 		4BEE5FA7217074F100A96F15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE5FA6217074F100A96F15 /* Constants.swift */; };
 		4BEE5FA921709A4A00A96F15 /* OperationQueue_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE5FA821709A4A00A96F15 /* OperationQueue_Extension.swift */; };
@@ -43,6 +48,12 @@
 		4BC2CFDB216DBD2000E47553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BDF218921724B5A00EA277F /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		4BDF218B21725E7000EA277F /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
+		4BDF218D2173272900EA277F /* NSObject+Observing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Observing.m"; sourceTree = "<group>"; };
+		4BDF218E2173272D00EA277F /* NSObject+Observing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Observing.h"; sourceTree = "<group>"; };
+		4BDF21AE21732F6300EA277F /* TableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		4BDF21B121732F6A00EA277F /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		4BDF21B72173473300EA277F /* BaseCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCellViewModel.swift; sourceTree = "<group>"; };
+		4BDF21B82173473400EA277F /* SubtitleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleCellModel.swift; sourceTree = "<group>"; };
 		4BEE5FA42170724E00A96F15 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		4BEE5FA6217074F100A96F15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4BEE5FA821709A4A00A96F15 /* OperationQueue_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueue_Extension.swift; sourceTree = "<group>"; };
@@ -107,6 +118,7 @@
 		4BC2CFCE216DBC8D00E47553 /* task iOS */ = {
 			isa = PBXGroup;
 			children = (
+				4BDF21902173277700EA277F /* ViewModels */,
 				4BEE5FB22171AFF000A96F15 /* DataStructures */,
 				4B23B397216FB203004F92AD /* Extensions */,
 				4BF6EFC0216F2EE600D13BC2 /* Command */,
@@ -124,9 +136,30 @@
 				4BF6EFC5216F31ED00D13BC2 /* TIOSExceptionHandler.m */,
 				4BEE5FB92171B61000A96F15 /* JSONValueTransformer+DataTransformer.h */,
 				4BEE5FBA2171B61100A96F15 /* JSONValueTransformer+DataTransformer.m */,
+				4BDF218E2173272D00EA277F /* NSObject+Observing.h */,
+				4BDF218D2173272900EA277F /* NSObject+Observing.m */,
 				4BF6EFC3216F31EC00D13BC2 /* task iOS-Bridging-Header.h */,
 			);
 			path = "task iOS";
+			sourceTree = "<group>";
+		};
+		4BDF21902173277700EA277F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4BDF21B121732F6A00EA277F /* BaseViewModel.swift */,
+				4BDF21AE21732F6300EA277F /* TableViewModel.swift */,
+				4BDF21B62173439E00EA277F /* CellViewModels */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4BDF21B62173439E00EA277F /* CellViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4BDF21B72173473300EA277F /* BaseCellViewModel.swift */,
+				4BDF21B82173473400EA277F /* SubtitleCellModel.swift */,
+			);
+			path = CellViewModels;
 			sourceTree = "<group>";
 		};
 		4BEE5FB22171AFF000A96F15 /* DataStructures */ = {
@@ -315,8 +348,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BF6EFB7216F2C6B00D13BC2 /* BaseModel.swift in Sources */,
+				4BDF21B92173473500EA277F /* BaseCellViewModel.swift in Sources */,
 				4BC2CFD2216DBC8E00E47553 /* ViewController.swift in Sources */,
 				4BEE5FB52171B0BF00A96F15 /* TIOSUser.m in Sources */,
+				4BDF21BA2173473500EA277F /* SubtitleCellModel.swift in Sources */,
 				4BF6EFC8216F399A00D13BC2 /* BaseRequest.swift in Sources */,
 				4BF6EFC6216F31ED00D13BC2 /* TIOSExceptionHandler.m in Sources */,
 				4BEE5FA921709A4A00A96F15 /* OperationQueue_Extension.swift in Sources */,
@@ -325,8 +360,11 @@
 				4BDF218C21725E7000EA277F /* UsersModel.swift in Sources */,
 				4BEE5FBD2171BB3D00A96F15 /* UsersRequest.swift in Sources */,
 				4BF6EFC2216F2EE600D13BC2 /* Command.swift in Sources */,
+				4BDF21B221732F6A00EA277F /* TableViewModel.swift in Sources */,
 				4BDF218A21724B5A00EA277F /* ListModel.swift in Sources */,
+				4BDF21B521732F6A00EA277F /* BaseViewModel.swift in Sources */,
 				4BEE5FB121710B8300A96F15 /* ConcurrentCommand.swift in Sources */,
+				4BDF218F2173272F00EA277F /* NSObject+Observing.m in Sources */,
 				4BEE5FAD2170E38E00A96F15 /* ClosureCommand.swift in Sources */,
 				4BEE5FBB2171B61100A96F15 /* JSONValueTransformer+DataTransformer.m in Sources */,
 				4BC2CFD0216DBC8E00E47553 /* AppDelegate.swift in Sources */,

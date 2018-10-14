@@ -10,9 +10,9 @@ import UIKit
 
 @objc protocol Model: NSObjectProtocol {
     
-    @objc var newData: Bool { get }
-    @objc var loading: Bool { get }
-    @objc var error: Error? { get }
+    var newData: Bool { get }
+    var loading: Bool { get }
+    var error: Error? { get }
     
     func loadData();
     func reset();
@@ -22,11 +22,11 @@ import UIKit
 
 class BaseModel: NSObject, Model {
     
-    @objc var newData: Bool = false;
+    dynamic var newData: Bool = false;
     
-    @objc var loading: Bool = false;
+    dynamic var loading: Bool = false;
     
-    @objc var error: Error?;
+    dynamic var error: Error?;
     
     
     weak var _lastRequest: BaseRequest?;

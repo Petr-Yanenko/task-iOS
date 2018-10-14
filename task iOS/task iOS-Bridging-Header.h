@@ -6,3 +6,4 @@
 #import <JSONModel/JSONModel.h>
 #import <AFNetworking/AFNetworking.h>
 #import "TIOSUserEntity.h"
+#import "NSObject+Observing.h"

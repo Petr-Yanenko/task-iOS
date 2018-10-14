@@ -13,7 +13,7 @@ class ErrorHandler: NSObject {
     static let instance = ErrorHandler();
     
     
-    func reportError(withError error: TIOSError) {
+    func reportError(withError error: Error) {
         
     }
     
