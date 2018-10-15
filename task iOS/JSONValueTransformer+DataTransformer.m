@@ -35,7 +35,7 @@
 }
 
 - (NSString *)NSStringFromNSInteger:(NSInteger)integer {
-    return [[NSString alloc] initWithFormat:@"%lu", integer];
+    return [[NSString alloc] initWithFormat:@"%td", integer];
 }
 
 @end

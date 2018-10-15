@@ -30,6 +30,7 @@
 		4BDF21E22174521600EA277F /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21E12174521600EA277F /* UsersViewModel.swift */; };
 		4BDF21E4217452BA00EA277F /* UsersCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21E3217452BA00EA277F /* UsersCellViewModel.swift */; };
 		4BDF21E62174A89600EA277F /* ActivityIndicatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21E52174A89600EA277F /* ActivityIndicatorController.swift */; };
+		4BDF21E82174BDF500EA277F /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21E72174BDF400EA277F /* KeyboardController.swift */; };
 		4BEE5FA52170724E00A96F15 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE5FA42170724E00A96F15 /* ErrorHandler.swift */; };
 		4BEE5FA7217074F100A96F15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE5FA6217074F100A96F15 /* Constants.swift */; };
 		4BEE5FA921709A4A00A96F15 /* OperationQueue_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE5FA821709A4A00A96F15 /* OperationQueue_Extension.swift */; };
@@ -74,6 +75,7 @@
 		4BDF21E12174521600EA277F /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		4BDF21E3217452BA00EA277F /* UsersCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCellViewModel.swift; sourceTree = "<group>"; };
 		4BDF21E52174A89600EA277F /* ActivityIndicatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorController.swift; sourceTree = "<group>"; };
+		4BDF21E72174BDF400EA277F /* KeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
 		4BEE5FA42170724E00A96F15 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		4BEE5FA6217074F100A96F15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4BEE5FA821709A4A00A96F15 /* OperationQueue_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueue_Extension.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				4BEE5FA6217074F100A96F15 /* Constants.swift */,
 				4BEE5FA42170724E00A96F15 /* ErrorHandler.swift */,
 				4BDF21E52174A89600EA277F /* ActivityIndicatorController.swift */,
+				4BDF21E72174BDF400EA277F /* KeyboardController.swift */,
 				4BC2CFD3216DBC8E00E47553 /* Main.storyboard */,
 				4BC2CFD6216DBD2000E47553 /* Assets.xcassets */,
 				4BC2CFD8216DBD2000E47553 /* LaunchScreen.storyboard */,
@@ -277,6 +280,7 @@
 				4BC2CFC9216DBC8D00E47553 /* Frameworks */,
 				4BC2CFCA216DBC8D00E47553 /* Resources */,
 				868AEF6CB8840444ACF92E32 /* [CP] Embed Pods Frameworks */,
+				4BDF21E92174C3E300EA277F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -337,6 +341,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4BDF21E92174C3E300EA277F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" c08a00d5622dfa2994b43ba104fc03449ec25fc9 30c690356554b3572424f5357af00cc6383a2c9bfb2775424585ecd62fe3811a";
+		};
 		72A0B9CAF73DC4296B783728 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +424,7 @@
 				4BEE5FBD2171BB3D00A96F15 /* UsersRequest.swift in Sources */,
 				4BF6EFC2216F2EE600D13BC2 /* Command.swift in Sources */,
 				4BDF21B221732F6A00EA277F /* TableViewModel.swift in Sources */,
+				4BDF21E82174BDF500EA277F /* KeyboardController.swift in Sources */,
 				4BDF218A21724B5A00EA277F /* ListModel.swift in Sources */,
 				4BDF21B521732F6A00EA277F /* BaseViewModel.swift in Sources */,
 				4BEE5FB121710B8300A96F15 /* ConcurrentCommand.swift in Sources */,

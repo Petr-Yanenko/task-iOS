@@ -16,6 +16,10 @@ class UsersViewModel: TableViewModel {
         }
     }
     
+    init(model: UsersModel) {
+        super.init(model: model);
+    }
+    
     override func cellReuseIdentifier(_ indexPath: IndexPath?) -> String {
         return "UsersCell";
     }

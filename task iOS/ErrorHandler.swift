@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ErrorHandler: NSObject {
     
@@ -14,11 +15,19 @@ class ErrorHandler: NSObject {
     
     
     func reportError(withError error: Error) {
-        
+        let description = (error as? TIOSError)?.localizedFailureReason ?? error.localizedDescription;
+        let nserror = NSError(
+            domain: "Task_iOS",
+            code: 0,
+            userInfo: [
+                NSLocalizedFailureReasonErrorKey: description
+            ]
+        );
+        self.reportError(withNSError: nserror);
     }
     
     func reportError(withNSError error: NSError) {
-        
+        Crashlytics.sharedInstance().recordError(error);
     }
 
 }
