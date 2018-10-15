@@ -17,6 +17,8 @@ import UIKit
     func loadData();
     func reset();
     func cancel();
+    func suspend();
+    func resume();
     
 }
 
@@ -50,6 +52,15 @@ class BaseModel: NSObject, Model {
     func cancel() {
         _lastRequest?.cancel();
     }
+    
+    func suspend() {
+        _lastRequest?.dataTask?.suspend();
+    }
+    
+    func resume() {
+        _lastRequest?.dataTask?.resume();
+    }
+    
 }
     
 // MARK: Protected

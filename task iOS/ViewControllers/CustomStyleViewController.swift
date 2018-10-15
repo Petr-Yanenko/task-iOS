@@ -18,7 +18,7 @@ class CustomStyleViewController : RefreshableTableViewController {
     }
 
     override func _configureCell(_ cell: UITableViewCell, indexPath: IndexPath) -> Void {
-        cell.selectionStyle = UITableViewCellSelectionStyle.default;
+        cell.selectionStyle = UITableViewCellSelectionStyle.gray;
         cell.preservesSuperviewLayoutMargins = false;
     }
 

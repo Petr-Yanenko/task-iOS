@@ -16,11 +16,18 @@ class CustomTableViewController : BaseViewController, UITableViewDataSource, UIT
     deinit {
         self._tableView.dataSource = nil;
         self._tableView.delegate = nil;
+        self.sna_unregisterAsObserver(
+            withSubject:_tableViewModel,
+            property:#selector(getter: PViewModel.newData),
+            context:&_newDataContext
+        );
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-//        _tableView.selectRowAtIndexPath(nil, animated: true, scrollPosition: UITableViewScrollPosition.None);
+        _tableView.selectRow(
+            at: nil, animated: true, scrollPosition: UITableViewScrollPosition.none
+        );
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -54,6 +61,35 @@ class CustomTableViewController : BaseViewController, UITableViewDataSource, UIT
         super._createScreenContent();
         self._configureTableView();
     }
+    
+    override func _addSubviews() {
+        super._addSubviews();
+        self.view.addSubview(self._tableView);
+    }
+    
+    override func _addConstraints() {
+        self._tableView.translatesAutoresizingMaskIntoConstraints = false;
+        self.view.addConstraints(
+            NSLayoutConstraint .constraints(
+                withVisualFormat: "H:|[tableView]|",
+                options: NSLayoutFormatOptions.directionLeadingToTrailing,
+                metrics: nil,
+                views: ["tableView": self._tableView]
+            )
+        );
+        self.view.addConstraints(
+            NSLayoutConstraint .constraints(
+                withVisualFormat: "V:[topLayoutGuide][tableView][bottomLayoutGuide]",
+                options: NSLayoutFormatOptions.directionLeadingToTrailing,
+                metrics: nil,
+                views: [
+                    "tableView": self._tableView,
+                    "topLayoutGuide": self.topLayoutGuide,
+                    "bottomLayoutGuide": self.bottomLayoutGuide
+                ]
+            )
+        );
+    }
 
     func _configureTableView() {
         _tableView.dataSource = self;
@@ -74,9 +110,9 @@ class CustomTableViewController : BaseViewController, UITableViewDataSource, UIT
 // MARK: TableView
 @objc extension CustomTableViewController {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return _tableViewModel.rowHeight(tableView.bounds.size.height, indexPath: indexPath);
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return _tableViewModel.rowHeight(tableView.bounds.size.height, indexPath: indexPath);
+//    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _tableViewModel.selectRowAction(indexPath);
@@ -87,7 +123,9 @@ class CustomTableViewController : BaseViewController, UITableViewDataSource, UIT
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: _tableViewModel.cellReuseIdentifier(indexPath));
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: _tableViewModel.cellReuseIdentifier(indexPath)
+        );
         let newCell : UITableViewCell;
         if let unwrappedCell = cell {
             newCell = unwrappedCell;

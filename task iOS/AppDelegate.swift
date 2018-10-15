@@ -8,14 +8,51 @@
 
 import UIKit
 
+private var _activityIndicatorContext: UInt8 = 0;
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
+    deinit {
+        self.sna_unregisterAsObserver(
+            withSubject: ActivityIndicatorController.instance,
+            property: #selector(getter: ActivityIndicatorController.activityIndicatorCounter),
+            context: &_activityIndicatorContext
+        );
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let model = UsersModel();
+        let viewModel = UsersViewModel(model: model);
+        let usersController = UsersViewController(with: viewModel);
+        let masterNavigation = NavigationController(rootViewController: usersController);
+        
+        var rootViewController: UIViewController = masterNavigation;
+//        if UIScreen.main.traitCollection.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+            let detailsNavigation = NavigationController();
+            
+            let split = ContainerViewController();
+            split.viewControllers = [masterNavigation, detailsNavigation];
+            
+            rootViewController = split;
+//        }
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds);
+        self.window?.rootViewController = rootViewController;
+        self.window?.makeKeyAndVisible();
+        
+        self.sna_registerAsObserver(
+            withSubject: ActivityIndicatorController.instance,
+            property: #selector(getter: ActivityIndicatorController.activityIndicatorCounter),
+            context: &_activityIndicatorContext
+        ) { (subject, old, new) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = ActivityIndicatorController.instance.activityIndicatorCounter > 0
+        }
+        
         return true
     }
 

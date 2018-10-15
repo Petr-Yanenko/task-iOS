@@ -79,16 +79,15 @@ class TableViewModel : BaseViewModel, PTableViewModel {
     override func _createViewData() throws -> Any {
         var data = [BaseCellViewModel]();
         for i in 0..<self._rowsCount(0) {
-            let item = try self._initializeItem();
+            let item = try self._createItem();
             item.configure(IndexPath(row: i, section: 0));
             data.append(item);
         }
         return data;
     }
 
-    func _initializeItem() throws -> BaseCellViewModel {
-        let item = try BaseCellViewModel.createCell(viewModel: self, model: _model);
-        return item;
+    func _createItem() throws -> BaseCellViewModel {
+        throw TIOSError.GenericError(nil);
     }
 
 }

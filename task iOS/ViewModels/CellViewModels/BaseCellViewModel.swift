@@ -19,17 +19,16 @@ class BaseCellViewModel : NSObject, PCellViewModel {
     let _model : BaseModel;
 
     
-    class func createCell(viewModel: PViewModel, model: BaseModel) throws -> BaseCellViewModel {
-        throw TIOSError.GenericError(nil);
-    }
-    
     required init(viewModel: PViewModel, model: BaseModel) {
+        //First stage of inititalization
         _viewModel = viewModel;
         _model = model;
+        
         super.init();
+        //Second stage of Initialization
     }
 
-    func configure(_ indexPath: IndexPath) -> Void {
-
+    func configure(_ indexPath: IndexPath) {
+        
     }
 }

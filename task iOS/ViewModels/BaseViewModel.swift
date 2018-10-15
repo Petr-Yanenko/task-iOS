@@ -44,21 +44,22 @@ class BaseViewModel : NSObject, PViewModel {
     
 
     deinit {
-        _model.sna_unregisterAsObserver(
+        self.sna_unregisterAsObserver(
             withSubject:_model,
             property:#selector(getter: BaseModel.newData),
             context:&_newDataContext
         );
-        _model.sna_unregisterAsObserver(
+        self.sna_unregisterAsObserver(
             withSubject:_model,
             property:#selector(getter: BaseModel.loading),
             context:&_loadingContext
         );
-        _model.sna_unregisterAsObserver(
+        self.sna_unregisterAsObserver(
             withSubject:_model,
             property:#selector(getter: BaseModel.error),
             context:&_errorContext
         );
+        NotificationCenter.default.removeObserver(self);
     }
 
     init(model: BaseModel, data: Any) {
@@ -88,6 +89,15 @@ class BaseViewModel : NSObject, PViewModel {
         self.reset();
         self.loadData();
     }
+    
+    func suspend() {
+        self._model.suspend();
+    }
+    
+    func resume() {
+        self._model.resume();
+    }
+    
 }
 
 // MARK: protected
@@ -106,6 +116,12 @@ class BaseViewModel : NSObject, PViewModel {
             if let sself = self {
                 let loading = sself._model.loading;
                 sself.loading = loading;
+                if loading {
+                    ActivityIndicatorController.instance.incrementActivityIndicator();
+                }
+                else {
+                    ActivityIndicatorController.instance.decrementActivityIndicator();
+                }
             }
         }
         self.sna_registerAsObserver(
@@ -127,6 +143,19 @@ class BaseViewModel : NSObject, PViewModel {
                 sself._setData();
             }
         }
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(_handleWillResignActiveNotification(_:)),
+            name: Notification.Name.UIApplicationWillResignActive,
+            object: nil
+        );
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(_handleDidBecomeActiveNotification(_:)),
+            name: Notification.Name.UIApplicationDidBecomeActive,
+            object: nil
+        );
     }
     
     func _setData() {
@@ -160,6 +189,19 @@ class BaseViewModel : NSObject, PViewModel {
     
     @nonobjc final func _tiosError(from: Error?) -> TIOSError? {
         return error as? TIOSError;
+    }
+    
+}
+
+// MARK: Notifications
+@objc extension BaseViewModel {
+    
+    func _handleWillResignActiveNotification(_ notification: Notification) {
+        self.suspend();
+    }
+    
+    func _handleDidBecomeActiveNotification(_ notification: Notification) {
+        self.resume();
     }
     
 }

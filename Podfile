@@ -9,9 +9,6 @@ target 'task iOS' do
     pod 'JSONModel'
     pod 'SDWebImage'
     pod 'MBProgressHUD'
-    pod 'KVNProgress'
     pod 'Fabric'
     pod 'Crashlytics'
-    pod 'SWTableViewCell'
-    pod 'CCBottomRefreshControl'
 end

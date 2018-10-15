@@ -29,6 +29,7 @@ enum TIOSError: Error {
     case JSONError(Error);
     case HTTPError(Int, Any?);
     case UsersMappingError;
+    case ActivityIndicatorCounterError;
     
     var localizedFailureReason: String {
         get {
@@ -54,6 +55,8 @@ enum TIOSError: Error {
                 return message;
             case .UsersMappingError:
                 return "Cannot map users data";
+            case .ActivityIndicatorCounterError:
+                return "Invalid counter discovered";
             }
         }
     }

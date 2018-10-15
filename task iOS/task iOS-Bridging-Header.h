@@ -7,3 +7,4 @@
 #import <AFNetworking/AFNetworking.h>
 #import "TIOSUserEntity.h"
 #import "NSObject+Observing.h"
+#import <SDWebImage/UIImageView+WebCache.h>
