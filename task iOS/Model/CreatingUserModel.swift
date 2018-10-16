@@ -120,9 +120,8 @@ extension CreatingUserModel {
         return emailPredicate.evaluate(with: email);
     }
     
-    func _validateUrl(_ url: String?) -> Bool {
-        let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
-        return url == nil || url!.count == 0 || NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with:url);
+    func _validateUrl(_ urlString: String?) -> Bool {
+        return urlString == nil || urlString!.count == 0 || URL(string: urlString!) != nil;
     }
     
 }

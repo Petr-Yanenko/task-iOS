@@ -65,6 +65,9 @@ class CreatingUserViewController: CustomStyleViewController {
             action: #selector(_createUserAction(_:))
         );
         self.navigationItem.rightBarButtonItem = saveButton;
+        
+        self._tableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.interactive;
+        self._tableView.separatorStyle = UITableViewCellSeparatorStyle.none;
     }
 
     override func didReceiveMemoryWarning() {

@@ -174,14 +174,13 @@ class CreatingUserCellViewModel: BaseCellViewModel {
 extension CreatingUserCellViewModel {
     
     private func _createBackgroundImage(valid: Bool) -> UIImage? {
-        let color: UIColor;
+        let color: UIColor = UIColor.red;
         if valid {
-            color = UIColor.white;
+            return nil;
         }
         else {
-            color = UIColor.red;
+            return UIImage(color: color)?.resizableImage(withCapInsets: UIEdgeInsets.zero);
         }
-        return UIImage(color: color)?.resizableImage(withCapInsets: UIEdgeInsets.zero);
     }
     
 }
