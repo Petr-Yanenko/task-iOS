@@ -122,7 +122,7 @@ extension CreatingUserModel {
     
     func _validateUrl(_ url: String?) -> Bool {
         let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
-        return NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with:url);
+        return url == nil || url!.count == 0 || NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with:url);
     }
     
 }

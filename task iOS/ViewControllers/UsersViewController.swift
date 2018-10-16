@@ -48,6 +48,10 @@ class UsersViewController: CustomStyleViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+    }
 
 }
 

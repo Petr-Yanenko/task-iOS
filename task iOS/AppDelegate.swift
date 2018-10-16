@@ -31,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Crashlytics.self]);
         
+        self.sna_registerAsObserver(
+            withSubject: ActivityIndicatorController.instance,
+            property: #selector(getter: ActivityIndicatorController.activityIndicatorCounter),
+            context: &_activityIndicatorContext
+        ) { (subject, old, new) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = ActivityIndicatorController.instance.activityIndicatorCounter > 0
+        }
+        
         let model = UsersModel();
         let viewModel = UsersViewModel(model: model);
         let usersController = UsersViewController(with: viewModel);
@@ -46,14 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds);
         self.window?.rootViewController = rootViewController;
         self.window?.makeKeyAndVisible();
-        
-        self.sna_registerAsObserver(
-            withSubject: ActivityIndicatorController.instance,
-            property: #selector(getter: ActivityIndicatorController.activityIndicatorCounter),
-            context: &_activityIndicatorContext
-        ) { (subject, old, new) in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = ActivityIndicatorController.instance.activityIndicatorCounter > 0
-        }
         
         return true
     }
