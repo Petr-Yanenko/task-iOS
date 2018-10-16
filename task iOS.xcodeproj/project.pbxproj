@@ -41,6 +41,9 @@
 		4BDF21FB21751DF700EA277F /* CreatingUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21FA21751DF700EA277F /* CreatingUserViewController.swift */; };
 		4BDF21FD21752A8900EA277F /* UIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21FC21752A8900EA277F /* UIImage_Extension.swift */; };
 		4BDF21FF2175A4BE00EA277F /* RequestUtitlity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21FE2175A4BE00EA277F /* RequestUtitlity.swift */; };
+		4BDF22012175D67900EA277F /* EditingUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF22002175D67900EA277F /* EditingUserRequest.swift */; };
+		4BDF22032175DA1600EA277F /* EditingUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF22022175DA1600EA277F /* EditingUserModel.swift */; };
+		4BDF22052175DC2100EA277F /* EditingUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF22042175DC2100EA277F /* EditingUserViewController.swift */; };
 		4BEE5FA52170724E00A96F15 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE5FA42170724E00A96F15 /* ErrorHandler.swift */; };
 		4BEE5FA7217074F100A96F15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE5FA6217074F100A96F15 /* Constants.swift */; };
 		4BEE5FA921709A4A00A96F15 /* OperationQueue_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE5FA821709A4A00A96F15 /* OperationQueue_Extension.swift */; };
@@ -96,6 +99,9 @@
 		4BDF21FA21751DF700EA277F /* CreatingUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingUserViewController.swift; sourceTree = "<group>"; };
 		4BDF21FC21752A8900EA277F /* UIImage_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage_Extension.swift; sourceTree = "<group>"; };
 		4BDF21FE2175A4BE00EA277F /* RequestUtitlity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUtitlity.swift; sourceTree = "<group>"; };
+		4BDF22002175D67900EA277F /* EditingUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserRequest.swift; sourceTree = "<group>"; };
+		4BDF22022175DA1600EA277F /* EditingUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserModel.swift; sourceTree = "<group>"; };
+		4BDF22042175DC2100EA277F /* EditingUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserViewController.swift; sourceTree = "<group>"; };
 		4BEE5FA42170724E00A96F15 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		4BEE5FA6217074F100A96F15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4BEE5FA821709A4A00A96F15 /* OperationQueue_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueue_Extension.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 				4BDF21C1217380A900EA277F /* RefreshableTableViewController.swift */,
 				4BDF21DF21744FE000EA277F /* UsersViewController.swift */,
 				4BDF21FA21751DF700EA277F /* CreatingUserViewController.swift */,
+				4BDF22042175DC2100EA277F /* EditingUserViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -256,6 +263,7 @@
 				4BDF218921724B5A00EA277F /* ListModel.swift */,
 				4BDF218B21725E7000EA277F /* UsersModel.swift */,
 				4BDF21EA2174DCD100EA277F /* CreatingUserModel.swift */,
+				4BDF22022175DA1600EA277F /* EditingUserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +274,7 @@
 				4BF6EFC7216F399A00D13BC2 /* BaseRequest.swift */,
 				4BEE5FBC2171BB3D00A96F15 /* UsersRequest.swift */,
 				4BDF21EC2174DD2E00EA277F /* CreatingUserRequest.swift */,
+				4BDF22002175D67900EA277F /* EditingUserRequest.swift */,
 				4BDF21FE2175A4BE00EA277F /* RequestUtitlity.swift */,
 			);
 			path = Requests;
@@ -440,8 +449,10 @@
 				4BDF21CC217380B300EA277F /* NavigationController.swift in Sources */,
 				4BDF21B92173473500EA277F /* BaseCellViewModel.swift in Sources */,
 				4BDF21E62174A89600EA277F /* ActivityIndicatorController.swift in Sources */,
+				4BDF22012175D67900EA277F /* EditingUserRequest.swift in Sources */,
 				4BDF21F921751B1C00EA277F /* String_Extension.swift in Sources */,
 				4BDF21DD217443EF00EA277F /* UsersTableCell.swift in Sources */,
+				4BDF22052175DC2100EA277F /* EditingUserViewController.swift in Sources */,
 				4BDF21EB2174DCD100EA277F /* CreatingUserModel.swift in Sources */,
 				4BDF21F6217519AF00EA277F /* UserCell.swift in Sources */,
 				4BDF21FD21752A8900EA277F /* UIImage_Extension.swift in Sources */,
@@ -476,6 +487,7 @@
 				4BDF21ED2174DD2E00EA277F /* CreatingUserRequest.swift in Sources */,
 				4BC2CFD0216DBC8E00E47553 /* AppDelegate.swift in Sources */,
 				4BDF21FF2175A4BE00EA277F /* RequestUtitlity.swift in Sources */,
+				4BDF22032175DA1600EA277F /* EditingUserModel.swift in Sources */,
 				4BEE5FB82171B36100A96F15 /* TIOSUserEntity.m in Sources */,
 				4BEE5FA7217074F100A96F15 /* Constants.swift in Sources */,
 			);

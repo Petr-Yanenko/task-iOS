@@ -8,7 +8,7 @@
 
 import UIKit
 
-private var _creatingUserContext: UInt8 = 0;
+private var _savingUserContext: UInt8 = 0;
 
 class CreatingUserViewModel: TableViewModel {
     
@@ -18,14 +18,14 @@ class CreatingUserViewModel: TableViewModel {
         }
     }
     
-    @objc dynamic var userCreated: Bool = false;
+    @objc dynamic var userSaved: Bool = false;
     
 
     deinit {
         self.sna_unregisterAsObserver(
             withSubject: _userModel,
-            property: #selector(getter: CreatingUserModel.userCreated),
-            context: &_creatingUserContext
+            property: #selector(getter: CreatingUserModel.userSaved),
+            context: &_savingUserContext
         );
     }
     
@@ -58,11 +58,11 @@ extension CreatingUserViewModel {
         super._addObservers(model);
         self.sna_registerAsObserver(
             withSubject:_userModel,
-            property:#selector(getter: CreatingUserModel.userCreated),
-            context:&_creatingUserContext
+            property:#selector(getter: CreatingUserModel.userSaved),
+            context:&_savingUserContext
         ) { [weak self] _,_,_ in
             if let sself = self {
-                sself.userCreated = sself._userModel.userCreated;
+                sself.userSaved = sself._userModel.userSaved;
             }
         }
     }

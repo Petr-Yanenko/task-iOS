@@ -9,7 +9,7 @@
 import UIKit
 
 private var _loadingContext: UInt8 = 0;
-private var _creatingUserContext: UInt8 = 0;
+private var _savingUserContext: UInt8 = 0;
 private var _keyboardContext: UInt8 = 0;
 
 class CreatingUserViewController: CustomStyleViewController {
@@ -31,8 +31,8 @@ class CreatingUserViewController: CustomStyleViewController {
         );
         self.sna_unregisterAsObserver(
             withSubject:_tableViewModel,
-            property:#selector(getter: CreatingUserViewModel.userCreated),
-            context:&_creatingUserContext
+            property:#selector(getter: CreatingUserViewModel.userSaved),
+            context:&_savingUserContext
         );
         
         self._hud?.hide(animated: false);
@@ -56,10 +56,10 @@ class CreatingUserViewController: CustomStyleViewController {
         self._tableView.register(
             usersNib, forCellReuseIdentifier: self._userViewModel.cellReuseIdentifier(nil)
         );
-        self.title = "Create User".localized;
+        self.title = self._screenTitle().localized;
         
         let saveButton = UIBarButtonItem(
-            title: "Create",
+            title: self._rightBarButtonItemTitle().localized,
             style: UIBarButtonItemStyle.plain,
             target: self,
             action: #selector(_createUserAction(_:))
@@ -79,7 +79,7 @@ class CreatingUserViewController: CustomStyleViewController {
 }
 
 // MARK: Protected
-extension CreatingUserViewController {
+@objc extension CreatingUserViewController {
     
     override func _configureCell(_ cell: UITableViewCell, indexPath: IndexPath) {
         let userCell = cell as! UserCell;
@@ -105,13 +105,25 @@ extension CreatingUserViewController {
         }
         self.sna_registerAsObserver(
             withSubject:_tableViewModel,
-            property:#selector(getter: CreatingUserViewModel.userCreated),
-            context:&_creatingUserContext
+            property:#selector(getter: CreatingUserViewModel.userSaved),
+            context:&_savingUserContext
         ) { [weak self] _,_,_ in
             if let sself = self {
-                sself.navigationController?.popViewController(animated: true);
+                sself._userSaved();
             }
         }
+    }
+    
+    func _userSaved() {
+        self.navigationController?.popViewController(animated: true);
+    }
+    
+    func _screenTitle() -> String {
+        return "Create User";
+    }
+    
+    func _rightBarButtonItemTitle() -> String {
+        return "Create";
     }
     
 }

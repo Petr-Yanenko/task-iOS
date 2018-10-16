@@ -29,14 +29,28 @@ class CreatingUserRequest: BaseRequest {
     
     convenience init(
         user: TIOSUserEntity,
+        keyPath: String,
         completion: @escaping (CreatingUserRequest, [TIOSUserEntity]?, Error?) -> Void
         ) throws {
         
-        try self.init(object: nil, method: "POST", params: ["User": user.toDictionary()], keyPath: "users.php") { (request, responseObject, error) in
+        try self.init(
+            object: nil,
+            method: "POST",
+            params: ["User": user.toDictionary()],
+            keyPath: keyPath
+            ) { (request, responseObject, error) in
             let userRequest = request as! CreatingUserRequest;
             let users = responseObject as? [TIOSUserEntity];
             completion(userRequest, users, error);
         }
+    }
+    
+    convenience init(
+        user: TIOSUserEntity,
+        completion: @escaping (CreatingUserRequest, [TIOSUserEntity]?, Error?) -> Void
+        ) throws {
+        
+        try self.init(user: user, keyPath: kUserRequestKeyPath, completion: completion);
     }
     
     override func _mapResponse(

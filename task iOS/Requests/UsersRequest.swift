@@ -31,7 +31,7 @@ class UsersRequest: BaseRequest {
         completion: @escaping (UsersRequest, [TIOSUserEntity]?, Error?) -> Void
         ) throws {
         
-        try self.init(object: nil, method: "GET", params: [String: Any](), keyPath: "users.php") { (request, responseObject, error) in
+        try self.init(object: nil, method: "GET", params: [String: Any](), keyPath: kUserRequestKeyPath) { (request, responseObject, error) in
             let userRequest = request as! UsersRequest;
             let users = responseObject as? [TIOSUserEntity];
             completion(userRequest, users, error);

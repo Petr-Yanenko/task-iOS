@@ -52,6 +52,17 @@ class UsersViewController: CustomStyleViewController {
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = EditingUserModel(
+            user: self._usersViewModel.usersModel.getItem(at: indexPath.row) as! TIOSUserEntity
+        );
+        model.delegate = self._usersViewModel.usersModel;
+        let viewModel = CreatingUserViewModel(model: model);
+        let viewController = EditingUserViewController(with: viewModel);
+        let navigation = NavigationController(rootViewController: viewController);
+        self.splitViewController?.showDetailViewController(navigation, sender: self);
+    }
 
 }
 

@@ -10,6 +10,8 @@ import Foundation
 
 let kBaseURLString: String = "https://cua-users.herokuapp.com/";
 
+let kUserRequestKeyPath: String = "users.php";
+
 let kNavigationBarFont = UIFont(name:"HelveticaNeue-Light", size:17.0);
     
 let kMainBackgroundColor = UIColor.darkGray;

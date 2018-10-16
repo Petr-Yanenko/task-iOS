@@ -18,7 +18,7 @@ protocol CreatingUserModelDelegate: NSObjectProtocol {
 
 class CreatingUserModel: BaseModel {
 
-    private var _user: TIOSUserEntity = TIOSUserEntity();
+    var _user: TIOSUserEntity = TIOSUserEntity();
     var user: TIOSUserEntityProtocol? {
         get {
             return _user;
@@ -34,7 +34,7 @@ class CreatingUserModel: BaseModel {
     @objc dynamic var emailValid = false;
     @objc dynamic var imageUrlValid = false;
     
-    @objc dynamic var userCreated = false;
+    @objc dynamic var userSaved = false;
     
     
     func setFirstName(_ name: String?) {
@@ -99,7 +99,7 @@ extension CreatingUserModel {
     
     override func _setData(_ data: Any) {
         self.users = data as? [TIOSUserEntityProtocol];
-        self.userCreated = true;
+        self.userSaved = true;
         self.delegate?.userModel(self, didReceiveUsers: data as? [TIOSUserEntity]);
     }
     
