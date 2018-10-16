@@ -37,7 +37,7 @@ class CustomTableViewController : BaseViewController, UITableViewDataSource, UIT
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
-        _tableView.reloadData();
+//        _tableView.reloadData();
     }
 }
 

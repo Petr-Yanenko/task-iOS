@@ -10,7 +10,7 @@ import UIKit
 
 class UsersViewModel: TableViewModel {
 
-    private var _usersModel: UsersModel {
+    var usersModel: UsersModel {
         get {
             return _model as! UsersModel;
         }
@@ -30,11 +30,11 @@ class UsersViewModel: TableViewModel {
 extension UsersViewModel {
     
     override func _rowsCount(_ batch: Int) -> Int {
-        return self._usersModel.count();
+        return self.usersModel.count();
     }
     
     override func _createItem() throws -> BaseCellViewModel {
-        return UsersCellViewModel(viewModel: self, model: self._usersModel);
+        return UsersCellViewModel(viewModel: self, model: self.usersModel);
     }
     
 }

@@ -14,7 +14,7 @@ class NavigationController : UINavigationController, UIGestureRecognizerDelegate
         }
     }
 
-    override func viewDidLoad() -> Void {
+    override func viewDidLoad() {
         super.viewDidLoad();
         var stringAttributes = [NSAttributedStringKey: AnyObject]();
         stringAttributes[NSAttributedStringKey.foregroundColor] = kMainTextColor;

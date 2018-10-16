@@ -5,8 +5,6 @@
 
 import Foundation
 
-typealias Action = () -> Void;
-
 private var _newDataContext: UInt8 = 0;
 private var _loadingContext: UInt8 = 0;
 private var _errorContext: UInt8 = 0;

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UsersModel: ListModel {
+class UsersModel: ListModel, CreatingUserModelDelegate {
     
     func copyUsers(fromPosition index: Int) -> [TIOSUserEntityProtocol] {
         let users = self.copyData(fromPosition: index);
@@ -20,17 +20,23 @@ class UsersModel: ListModel {
 // MARK: Protected
 extension UsersModel {
     
-    override func _request(with completion: @escaping (Bool, Error?) -> Void) throws -> BaseRequest {
-        return try UsersRequest() { [weak self] _, responseObject, error in
-            var newData = false;
-            if let sself = self {
-                if let response = responseObject {
-                    sself._list = response;
-                    newData = true;
-                }
-            }
-            completion(newData, error);
+    override func _request(with completion: @escaping (Any?, Error?) -> Void) throws -> BaseRequest {
+        return try UsersRequest() { _, responseObject, error in
+            completion(responseObject, error);
         }
+    }
+    
+    override func _setData(_ data: Any) {
+        self._list = data as! [TIOSUserEntity];
+    }
+    
+}
+
+// MARK: CreatingUserModelDelegate
+extension UsersModel {
+    
+    func userModel(_ model: CreatingUserModel, didReceiveUsers users: [TIOSUserEntity]?) {
+        self._processResponse(users, nil);
     }
     
 }

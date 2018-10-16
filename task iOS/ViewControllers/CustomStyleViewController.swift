@@ -8,7 +8,7 @@ import Foundation
 class CustomStyleViewController : RefreshableTableViewController {
 
 // MARK: protected
-    override func _configureTableView() -> Void {
+    override func _configureTableView() {
         super._configureTableView();
         if #available(iOS 9.0, *) {
             _tableView.cellLayoutMarginsFollowReadableWidth = false
@@ -17,13 +17,13 @@ class CustomStyleViewController : RefreshableTableViewController {
         };
     }
 
-    override func _configureCell(_ cell: UITableViewCell, indexPath: IndexPath) -> Void {
+    override func _configureCell(_ cell: UITableViewCell, indexPath: IndexPath) {
         cell.selectionStyle = UITableViewCellSelectionStyle.gray;
         cell.preservesSuperviewLayoutMargins = false;
     }
 
 // MARK: TableView
-    func tableView(_ tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: IndexPath) -> Void {
+    func tableView(_ tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: IndexPath) {
         cell.separatorInset = UIEdgeInsets.zero;
         cell.preservesSuperviewLayoutMargins = false;
         cell.layoutMargins = UIEdgeInsets.zero;

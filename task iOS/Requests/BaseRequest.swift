@@ -21,13 +21,13 @@ typealias RequestCompletion = (
 protocol Request: NSObjectProtocol {
     
     var method: String { get };
-    var params: [String: String] { get };
+    var params: [String: Any] { get };
     var keyPath: String { get };
     
     init(
         object: AbstractJSONModelProtocol?,
         method: String,
-        params: [String: String],
+        params: [String: Any],
         keyPath: String,
         completion: RequestCompletion?
     ) throws;
@@ -42,8 +42,8 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
     private var _method: String;
     var method: String { get { return _method; } };
     
-    private var _params: [String: String];
-    var params: [String: String] { get { return _params; } };
+    private var _params: [String: Any];
+    var params: [String: Any] { get { return _params; } };
     
     private var _keyPath: String;
     var keyPath: String { get { return _keyPath; } };
@@ -57,7 +57,7 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
     required init(
         object: AbstractJSONModelProtocol?,
         method: String,
-        params: [String: String],
+        params: [String: Any],
         keyPath: String,
         completion: RequestCompletion?
         ) throws {
@@ -105,7 +105,7 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
     
     convenience init(
         method: String,
-        params: [String: String],
+        params: [String: Any],
         keyPath: String,
         completion: RequestCompletion?
         ) throws {

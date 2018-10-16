@@ -30,19 +30,15 @@ class BaseModel: NSObject, Model {
     
     dynamic var error: Error?;
     
-    
     weak var _lastRequest: BaseRequest?;
     
     
+    deinit {
+        self.loading = false;
+    }
+    
     func loadData() {
-        self.loading = true;
-        self._load { [weak self] newData, error in
-            if let sself = self {
-                sself.newData = newData;
-                sself.error = error;
-                sself.loading = false;
-            }
-        };
+        self._startNetworkOperation();
     }
     
     func reset() {
@@ -66,8 +62,18 @@ class BaseModel: NSObject, Model {
 // MARK: Protected
 @objc extension BaseModel {
     
-    func _load(with completion: @escaping (Bool, Error?) -> Void) {
+    func _startNetworkOperation() {
+        self.loading = true;
+        self._executeRequest { [weak self] responseObject, error in
+            if let sself = self {
+                sself._processResponse(responseObject, error);
+            }
+        };
+    }
+    
+    func _executeRequest(with completion: @escaping (Any?, Error?) -> Void) {
         do {
+            self._lastRequest?.cancel();
             let request = try self._request(with: completion);
             request.execute();
             self._lastRequest = request;
@@ -77,8 +83,23 @@ class BaseModel: NSObject, Model {
         }
     }
     
-    func _request(with completion: @escaping (Bool, Error?) -> Void) throws -> BaseRequest {
+    func _request(with completion: @escaping (Any?, Error?) -> Void) throws -> BaseRequest {
         throw TIOSError.GenericError(nil);
+    }
+    
+    func _setData(_ data: Any) {
+        
+    }
+    
+    func _processResponse(_ responseObject: Any?, _ error: Error?) {
+        var newData = false;
+        if let response = responseObject {
+            self._setData(response);
+            newData = true;
+        }
+        self.newData = newData;
+        self.error = error;
+        self.loading = false;
     }
 
 }

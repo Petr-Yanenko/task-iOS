@@ -12,7 +12,7 @@ import Foundation
         self.delegate = nil;
     }
     
-    override func viewDidLoad() -> Void {
+    override func viewDidLoad() {
         super.viewDidLoad();
         self.setNeedsStatusBarAppearanceUpdate();
         self.delegate = self;
