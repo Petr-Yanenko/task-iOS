@@ -26,17 +26,6 @@ class EditingUserViewController: CreatingUserViewController {
 // MARK: Protected
 extension EditingUserViewController {
     
-    override func _userSaved() {
-        let alert = UIAlertController.init(title: "Saved".localized, message: nil, preferredStyle: UIAlertControllerStyle.alert);
-        alert.addAction(UIAlertAction(
-            title: "Ok".localized,
-            style: UIAlertActionStyle.default,
-            handler: nil
-            )
-        );
-        self.present(alert, animated: true, completion: nil);
-    }
-    
     override func _screenTitle() -> String {
         return "Edit User";
     }

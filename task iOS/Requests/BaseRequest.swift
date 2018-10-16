@@ -142,6 +142,17 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
         
         self.dataTask?.cancel();
     }
+    
+    func suspend() {
+        self.dataTask?.suspend();
+        self._session().delegateQueue.isSuspended = true;
+    }
+    
+    func resume() {
+        self.dataTask?.resume();
+        self._session().delegateQueue.isSuspended = false;
+    }
+    
 }
     
 // MARK: Protected
@@ -151,7 +162,7 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
         do {
             let request = try self._request();
             self._configureRequest(request);
-            let session = self._createSession();
+            let session = self._session();
             let task = self._dataTask(withSession: session, request: request);
             self._dataTask = task;
             task.resume();
@@ -202,7 +213,7 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
     func _configureRequest(_ request: URLRequest) {
     }
     
-    func _createSession() -> URLSession {
+    func _session() -> URLSession {
         
         if BaseRequest._instance == nil {
             let configuration = URLSessionConfiguration.default;

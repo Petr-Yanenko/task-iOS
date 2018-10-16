@@ -103,18 +103,7 @@ class UserCell: UITableViewCell, UITextFieldDelegate {
         replacementString string: String
         ) -> Bool {
         let newString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string);
-        if textField === self.firstName {
-            self.cellModel?.firstName = newString;
-        }
-        else if textField === self.lastName {
-            self.cellModel?.lastName = newString;
-        }
-        else if textField === self.email {
-            self.cellModel?.email = newString;
-        }
-        else if textField === self.imageUrl {
-            self.cellModel?.imageUrl = newString;
-        }
+        self._textChanged(newString, at: textField);
         return true;
     }
     
@@ -128,6 +117,11 @@ class UserCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true;
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self._textChanged("", at: textField);
         return true;
     }
     
@@ -196,6 +190,21 @@ extension UserCell {
                 sself.imageUrl?.background = sself.cellModel?.imageUrlBackground;
             }
         };
+    }
+    
+    private func _textChanged(_ newString: String?, at textField: UITextField) {
+        if textField === self.firstName {
+            self.cellModel?.firstName = newString;
+        }
+        else if textField === self.lastName {
+            self.cellModel?.lastName = newString;
+        }
+        else if textField === self.email {
+            self.cellModel?.email = newString;
+        }
+        else if textField === self.imageUrl {
+            self.cellModel?.imageUrl = newString;
+        }
     }
     
 }

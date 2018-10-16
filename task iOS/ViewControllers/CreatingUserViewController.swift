@@ -118,7 +118,16 @@ class CreatingUserViewController: CustomStyleViewController {
     }
     
     func _userSaved() {
-        self.navigationController?.popViewController(animated: true);
+        let alert = UIAlertController(
+            title: "Done".localized, message:nil, preferredStyle: UIAlertControllerStyle.alert
+        );
+        alert.addAction(UIAlertAction(title: "Ok".localized, style: UIAlertActionStyle.default) { [weak self] _ in
+            if let sself = self {
+                sself.navigationController?.popViewController(animated: true);
+                sself.navigationController?.navigationController?.popToRootViewController(animated: true);
+            }
+        });
+        self.present(alert, animated: true, completion: nil);
     }
     
     func _screenTitle() -> String {

@@ -50,11 +50,11 @@ class BaseModel: NSObject, Model {
     }
     
     func suspend() {
-        _lastRequest?.dataTask?.suspend();
+        _lastRequest?.suspend();
     }
     
     func resume() {
-        _lastRequest?.dataTask?.resume();
+        _lastRequest?.resume();
     }
     
 }
