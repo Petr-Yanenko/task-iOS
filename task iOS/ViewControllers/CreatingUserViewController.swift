@@ -124,7 +124,6 @@ class CreatingUserViewController: CustomStyleViewController {
         alert.addAction(UIAlertAction(title: "Ok".localized, style: UIAlertActionStyle.default) { [weak self] _ in
             if let sself = self {
                 sself.navigationController?.popViewController(animated: true);
-                sself.navigationController?.navigationController?.popToRootViewController(animated: true);
             }
         });
         self.present(alert, animated: true, completion: nil);

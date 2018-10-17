@@ -5,7 +5,40 @@
 
 import Foundation
 
+private var _keyboardContext: UInt8 = 0;
+
 class CustomStyleViewController : RefreshableTableViewController {
+    
+//    MARK: Life cycle
+    deinit {
+        self.sna_unregisterAsObserver(
+            withSubject: KeyboardController.keyboardInfo,
+            property: #selector(getter: KeyboardController.keyboardHeight),
+            context: &_keyboardContext
+        );
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad();
+        self.automaticallyAdjustsScrollViewInsets = false;
+        self.sna_registerAsObserver(
+        withSubject: KeyboardController.keyboardInfo,
+        property: #selector(getter: KeyboardController.keyboardHeight),
+        context: &_keyboardContext
+        ) { [weak self] _,_,_ in
+            if let sself = self {
+                let previous = sself._tableView.contentInset;
+                let inset = UIEdgeInsetsMake(
+                    previous.top,
+                    previous.left,
+                    KeyboardController.keyboardInfo.keyboardHeight,
+                    previous.right
+                );
+                sself._tableView.contentInset = inset;
+                sself._tableView.scrollIndicatorInsets = inset;
+            }
+        }
+    }
 
 // MARK: protected
     override func _configureTableView() {

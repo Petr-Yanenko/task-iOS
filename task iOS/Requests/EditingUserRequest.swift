@@ -10,6 +10,9 @@ import UIKit
 
 class EditingUserRequest: CreatingUserRequest {
     
+    private var _userID = 0;
+    
+    
     required init(
         object: AbstractJSONModelProtocol?,
         method: String,
@@ -34,9 +37,31 @@ class EditingUserRequest: CreatingUserRequest {
         
         try self.init(
             user: user,
-            keyPath: kUserRequestKeyPath + "?user_id=\(user.id)",
+            keyPath: "edit_user.php",
             completion: completion
         );
+        
+        _userID = user.id;
+    }
+    
+}
+
+// MARK: Protected
+extension EditingUserRequest {
+    
+    override func _request() throws -> URLRequest {
+        do {
+            var request = try super._request();
+            let query = AFQueryStringFromParameters(["user_id": self._userID]);
+            guard let url = request.url?.absoluteString else {
+                throw TIOSError.GenericError(nil);
+            }
+            request.url = URL(string: url + "?\(query)");
+            return request;
+        }
+        catch {
+            throw TIOSError.EditingUserRequestError(error);
+        }
     }
     
 }

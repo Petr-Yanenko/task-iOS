@@ -60,8 +60,7 @@ class UsersViewController: CustomStyleViewController {
         model.delegate = self._usersViewModel.usersModel;
         let viewModel = CreatingUserViewModel(model: model);
         let viewController = EditingUserViewController(with: viewModel);
-        let navigation = NavigationController(rootViewController: viewController);
-        self.splitViewController?.showDetailViewController(navigation, sender: self);
+        self.navigationController?.pushViewController(viewController, animated: true);
     }
 
 }
@@ -72,7 +71,16 @@ extension UsersViewController {
     override func _configureCell(_ cell: UITableViewCell, indexPath: IndexPath) {
         let usersCell = cell as! UsersTableCell;
         let userCellModel = self._usersViewModel.cellViewModel(indexPath) as! UsersCellViewModel;
-        usersCell.avatar?.sd_setImage(with: userCellModel.imageURL);
+        if userCellModel.imageURL != nil {
+            usersCell.avatar?.sd_setImage(with: userCellModel.imageURL);
+        }
+        else {
+            let size: CGFloat = 44.0;
+            usersCell.avatar?.image = UIImage(
+                color: UIColor.darkGray,
+                size: CGSize(width: size, height: size)
+            );
+        }
         usersCell.content?.attributedText = userCellModel.content;
     }
     

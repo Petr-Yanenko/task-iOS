@@ -196,7 +196,7 @@ class BaseRequest: ConcurrentCommand, Request, URLSessionDataDelegate {
         }
         
         var error: NSError?
-        let request = AFHTTPRequestSerializer().request(
+        let request = AFJSONRequestSerializer().request(
             withMethod: self.method,
             urlString: url.absoluteString,
             parameters: self.params,

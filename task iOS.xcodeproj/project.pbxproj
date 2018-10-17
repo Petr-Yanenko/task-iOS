@@ -22,7 +22,6 @@
 		4BDF21CF217380B400EA277F /* RefreshableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21C1217380A900EA277F /* RefreshableTableViewController.swift */; };
 		4BDF21D1217380B400EA277F /* CustomStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21C3217380AB00EA277F /* CustomStyleViewController.swift */; };
 		4BDF21D2217380B400EA277F /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21C4217380AB00EA277F /* CustomTableViewController.swift */; };
-		4BDF21D6217380B400EA277F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21C8217380B000EA277F /* ContainerViewController.swift */; };
 		4BDF21D9217380B400EA277F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21CB217380B300EA277F /* BaseViewController.swift */; };
 		4BDF21DD217443EF00EA277F /* UsersTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF21DB217443EF00EA277F /* UsersTableCell.swift */; };
 		4BDF21DE217443EF00EA277F /* UsersTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BDF21DC217443EF00EA277F /* UsersTableCell.xib */; };
@@ -80,7 +79,6 @@
 		4BDF21C1217380A900EA277F /* RefreshableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshableTableViewController.swift; sourceTree = "<group>"; };
 		4BDF21C3217380AB00EA277F /* CustomStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyleViewController.swift; sourceTree = "<group>"; };
 		4BDF21C4217380AB00EA277F /* CustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
-		4BDF21C8217380B000EA277F /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		4BDF21CB217380B300EA277F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4BDF21DB217443EF00EA277F /* UsersTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableCell.swift; sourceTree = "<group>"; };
 		4BDF21DC217443EF00EA277F /* UsersTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableCell.xib; sourceTree = "<group>"; };
@@ -222,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				4BDF21CB217380B300EA277F /* BaseViewController.swift */,
-				4BDF21C8217380B000EA277F /* ContainerViewController.swift */,
 				4BDF21C3217380AB00EA277F /* CustomStyleViewController.swift */,
 				4BDF21C4217380AB00EA277F /* CustomTableViewController.swift */,
 				4BDF21BE217380A300EA277F /* NavigationController.swift */,
@@ -482,7 +479,6 @@
 				4BEE5FAD2170E38E00A96F15 /* ClosureCommand.swift in Sources */,
 				4BDF21D1217380B400EA277F /* CustomStyleViewController.swift in Sources */,
 				4BEE5FBB2171B61100A96F15 /* JSONValueTransformer+DataTransformer.m in Sources */,
-				4BDF21D6217380B400EA277F /* ContainerViewController.swift in Sources */,
 				4BDF21E4217452BA00EA277F /* UsersCellViewModel.swift in Sources */,
 				4BDF21ED2174DD2E00EA277F /* CreatingUserRequest.swift in Sources */,
 				4BC2CFD0216DBC8E00E47553 /* AppDelegate.swift in Sources */,

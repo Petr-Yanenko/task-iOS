@@ -35,8 +35,8 @@ extension UsersModel {
 // MARK: CreatingUserModelDelegate
 extension UsersModel {
     
-    func userModel(_ model: CreatingUserModel, didReceiveUsers users: [TIOSUserEntity]?) {
-        self._processResponse(users, nil);
+    func userModel(_ model: CreatingUserModel, didReceiveResponse object: Any?) {
+        self.loadData();
     }
     
 }

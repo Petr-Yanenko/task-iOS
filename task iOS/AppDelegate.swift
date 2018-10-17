@@ -44,12 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let usersController = UsersViewController(with: viewModel);
         let masterNavigation = NavigationController(rootViewController: usersController);
         
-        let detailsNavigation = NavigationController();
-        
-        let split = ContainerViewController();
-        split.viewControllers = [masterNavigation, detailsNavigation];
-        
-        let rootViewController = split;
+        let rootViewController = masterNavigation;
         
         self.window = UIWindow(frame: UIScreen.main.bounds);
         self.window?.rootViewController = rootViewController;

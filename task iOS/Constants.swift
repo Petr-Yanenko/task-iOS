@@ -12,6 +12,8 @@ let kBaseURLString: String = "https://cua-users.herokuapp.com/";
 
 let kUserRequestKeyPath: String = "users.php";
 
+let kEditUserTitle = "Edit User";
+
 let kNavigationBarFont = UIFont(name:"HelveticaNeue-Light", size:17.0);
     
 let kMainBackgroundColor = UIColor.darkGray;
@@ -33,6 +35,7 @@ enum TIOSError: Error {
     case UsersMappingError;
     case ActivityIndicatorCounterError;
     case CreatingUserRequestInitError;
+    case EditingUserRequestError(Error);
     
     var localizedFailureReason: String {
         get {
@@ -62,6 +65,8 @@ enum TIOSError: Error {
                 return "Invalid counter discovered";
             case .CreatingUserRequestInitError:
                 return "User is nil";
+            case .EditingUserRequestError(let error):
+                return self._createErrorDescription(message: "Request is nil", underlyingError: error);
             }
         }
     }

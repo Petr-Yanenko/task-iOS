@@ -36,7 +36,7 @@ class CreatingUserRequest: BaseRequest {
         try self.init(
             object: nil,
             method: "POST",
-            params: ["User": user.toDictionary()],
+            params: ["user": user.toDictionary()],
             keyPath: keyPath
             ) { (request, responseObject, error) in
             let userRequest = request as! CreatingUserRequest;
@@ -53,12 +53,17 @@ class CreatingUserRequest: BaseRequest {
         try self.init(user: user, keyPath: kUserRequestKeyPath, completion: completion);
     }
     
+}
+
+// MARK: Protected
+extension CreatingUserRequest {
+    
     override func _mapResponse(
         _ responseObject: Any,
         _ completion: (Any?, Error?) -> Void
         ) {
         
-        _requestUtitlityMapUsersResponse(responseObject, completion);
+        completion(nil, nil);
     }
 
 }

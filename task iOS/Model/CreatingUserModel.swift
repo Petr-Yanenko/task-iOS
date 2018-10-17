@@ -12,7 +12,7 @@ let kNumberOfNameSymbols = 2;
 
 protocol CreatingUserModelDelegate: NSObjectProtocol {
     
-    func userModel(_ model: CreatingUserModel, didReceiveUsers users: [TIOSUserEntity]?);
+    func userModel(_ model: CreatingUserModel, didReceiveResponse object: Any?);
     
 }
 
@@ -24,8 +24,6 @@ class CreatingUserModel: BaseModel {
             return _user;
         }
     }
-    
-    var users: [TIOSUserEntityProtocol]?
     
     weak var delegate: CreatingUserModelDelegate?
     
@@ -97,10 +95,10 @@ extension CreatingUserModel {
         }
     }
     
-    override func _setData(_ data: Any) {
-        self.users = data as? [TIOSUserEntityProtocol];
+    override func _processResponse(_ responseObject: Any?, _ error: Error?) {
+        super._processResponse(responseObject, error);
         self.userSaved = true;
-        self.delegate?.userModel(self, didReceiveUsers: data as? [TIOSUserEntity]);
+        self.delegate?.userModel(self, didReceiveResponse: responseObject);
     }
     
     func _setInputData(_ block: () -> Void) {

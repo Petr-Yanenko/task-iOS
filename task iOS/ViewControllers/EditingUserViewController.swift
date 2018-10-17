@@ -27,7 +27,7 @@ class EditingUserViewController: CreatingUserViewController {
 extension EditingUserViewController {
     
     override func _screenTitle() -> String {
-        return "Edit User";
+        return kEditUserTitle;
     }
     
     override func _rightBarButtonItemTitle() -> String {
