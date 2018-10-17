@@ -71,6 +71,10 @@ class CreatingUserModel: BaseModel {
     func save() {
         let valid = self.validate();
         if valid {
+            self._user.firstName = self.user?.firstName?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines);
+            self._user.lastName = self.user?.lastName?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines);
+            self._user.email = self.user?.email?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines);
+            self._user.imageUrl = self.user?.imageUrl?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines);
             self._startNetworkOperation();
         }
     }
@@ -107,7 +111,7 @@ extension CreatingUserModel {
     }
     
     func _validateName(_ name: String?) -> Bool {
-        let count = name?.count ?? 0;
+        let count = name?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count ?? 0;
         return count >= kNumberOfNameSymbols;
     }
     
@@ -115,11 +119,12 @@ extension CreatingUserModel {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}";
         
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx);
-        return emailPredicate.evaluate(with: email);
+        return emailPredicate.evaluate(with: email?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines));
     }
     
     func _validateUrl(_ urlString: String?) -> Bool {
-        return urlString == nil || urlString!.count == 0 || URL(string: urlString!) != nil;
+        let url = urlString?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines);
+        return url == nil || url!.count == 0 || URL(string: url!) != nil;
     }
     
 }
